@@ -1,5 +1,7 @@
 class FeedsController < ApplicationController
   before_action :set_feed, only: [:show, :edit, :update, :destroy]
+  before_filter :authenticate_user!, except: [:index, :show]
+  before_action :correct_user, only: [:edit, :update, :destroy]
 
   # GET /feeds
   # GET /feeds.json
@@ -14,7 +16,7 @@ class FeedsController < ApplicationController
 
   # GET /feeds/new
   def new
-    @feed = Feed.new
+    @feed = current_user.feeds.build
   end
 
   # GET /feeds/1/edit
@@ -24,7 +26,7 @@ class FeedsController < ApplicationController
   # POST /feeds
   # POST /feeds.json
   def create
-    @feed = Feed.new(feed_params)
+    @feed = current_user.feeds.build(feed_params)
 
     respond_to do |format|
       if @feed.save
@@ -67,8 +69,14 @@ class FeedsController < ApplicationController
       @feed = Feed.find(params[:id])
     end
 
+     def correct_user
+      @feed = current_user.feeds.find_by(id: params[:id])
+      redirect_to feeds_path, notice: "Not authorized to edit this pin" if @feed.nil?
+    end
+
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def feed_params
-      params.require(:feed).permit(:title)
+      params.require(:feed).permit(:title,:image)
     end
 end
