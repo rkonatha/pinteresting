@@ -6,7 +6,7 @@ class FeedsController < ApplicationController
   # GET /feeds
   # GET /feeds.json
   def index
-    @feeds = Feed.all.order("created_at DESC")
+    @feeds = Feed.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 8)
   end
 
   # GET /feeds/1
