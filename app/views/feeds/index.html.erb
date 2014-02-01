@@ -1,34 +1,16 @@
-<h1>Listing feeds</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Image</th>
-      <th>Title</th>
-      <th>User</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @feeds.each do |feed| %>
-      <tr>
-        <td><%= image_tag feed.image.url(:medium) %></td>
-        <td><%= feed.title %></td>
-        <%= feed.user.try(:first_name) %>
-        <td><%= link_to 'Show', feed %></td>
+<div id="feeds" class="transitions-enabled">
+  <% @feeds.each do |feed| %>
+    <div class="box panel panel-default">
+      <%= image_tag feed.image.url(:medium) %>
+      <div class="panel-body">
+        <%= feed.title %>
+        <%= feed.user.first_name %>
+        <%= link_to 'Show', feed_path(feed) %>
         <% if feed.user == current_user %>
-          <td><%= link_to 'Edit', edit_feed_path(feed) %></td>
-          <td><%= link_to 'Destroy', feed, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <%= link_to 'Edit', edit_feed_path(feed) %>
+          <%= link_to 'Destroy', feed, method: :delete, data: { confirm: 'Are you sure?' } %>
         <% end %>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-<% if user_signed_in? %>
-  <%= link_to 'New Feed', new_feed_path %>
-<% end %>
+      </div>
+    </div>
+  <% end %>
+</div>
