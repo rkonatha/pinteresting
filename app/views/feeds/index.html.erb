@@ -1,14 +1,20 @@
+<%= render 'pages/home' unless user_signed_in? %>
 <div id="feeds" class="transitions-enabled">
   <% @feeds.each do |feed| %>
     <div class="box panel panel-default">
-      <%= image_tag feed.image.url(:medium) %>
       <div class="panel-body">
-        <%= feed.title %>
-        <%= feed.user.first_name %>
-        <%= link_to 'Show', feed_path(feed) %>
+        <p><strong><%= feed.title %></strong></p>
+        <%= link_to image_tag(feed.image.url(:medium)), feed %>
+        <p><%= feed.user.first_name %> <%= feed.user.last_name %></p>
         <% if feed.user == current_user %>
-          <%= link_to 'Edit', edit_feed_path(feed) %>
-          <%= link_to 'Destroy', feed, method: :delete, data: { confirm: 'Are you sure?' } %>
+          <%= link_to edit_feed_path(feed) do %>
+            <span class="glyphicon glyphicon-edit"></span>
+            Edit
+          <% end %>
+          <%= link_to feed, method: :delete, data: { confirm: 'Are you sure?' } do %>
+            <span class="glyphicon glyphicon-trash"></span>
+            Delete
+          <% end %>
         <% end %>
       </div>
     </div>
