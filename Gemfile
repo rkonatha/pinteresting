@@ -19,6 +19,7 @@ gem "will_paginate", "~> 3.0"
 gem "will_paginate-bootstrap"
 gem "clockwork"
 gem 'delayed_job_active_record'
+gem "feedzirra"
 
 group :development, :test do
      gem 'sqlite3'
