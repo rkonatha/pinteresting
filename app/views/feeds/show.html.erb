@@ -5,16 +5,8 @@
     <div class="panel panel-default">
       <div class="panel-heading center">
         <p><strong><%= @feed.title %></strong></p>
-        <%= image_tag @feed.image.url(:medium) %>
       </div>
       <div class="panel-body">
-        <p><%= @feed.user.first_name if @feed.user %> <%= @feed.user.last_name if @feed.user %></p>
-        <% if @feed.user == current_user %>
-        	<%= link_to edit_feed_path(@feed) do %>
-            <span class="glyphicon glyphicon-edit"></span>
-            Edit
-          <% end %>
-        <% end %>
       </div>
     </div>
   </div>

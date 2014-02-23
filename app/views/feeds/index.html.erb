@@ -4,18 +4,6 @@
     <div class="box panel panel-default">
       <div class="panel-body">
         <p><strong><%= feed.title %></strong></p>
-        <%= link_to image_tag(feed.image.url(:medium)), feed %>
-        <p><%= feed.user.first_name %> <%= feed.user.last_name %></p>
-        <% if feed.user == current_user %>
-          <%= link_to edit_feed_path(feed) do %>
-            <span class="glyphicon glyphicon-edit"></span>
-            Edit
-          <% end %>
-          <%= link_to feed, method: :delete, data: { confirm: 'Are you sure?' } do %>
-            <span class="glyphicon glyphicon-trash"></span>
-            Delete
-          <% end %>
-        <% end %>
       </div>
     </div>
   <% end %>
