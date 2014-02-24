@@ -2,8 +2,13 @@
 <div id="feeds" class="transitions-enabled">
   <% @feeds.each do |feed| %>
     <div class="box panel panel-default">
+    	<%= link_to feed.content do %>
+	      <div class="panel-heading center">
+	        <p><strong><%= feed.title %></strong></p>
+	      </div>
+    	<% end %>
       <div class="panel-body">
-        <p><strong><%= feed.title %></strong></p>
+        <p><%= render inline: feed.summary %></p>
       </div>
     </div>
   <% end %>

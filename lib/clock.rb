@@ -4,4 +4,4 @@ require 'clockwork'
 require 'interval_job.rb'
 
 include Clockwork
-every(5.seconds, 'Queueing interval job') { Delayed::Job.enqueue IntervalJob.new }
+every(1.hour, 'Queueing interval job') { Delayed::Job.enqueue IntervalJob.new }
