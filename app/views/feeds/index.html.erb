@@ -2,7 +2,7 @@
 <div id="feeds" class="transitions-enabled">
   <% @feeds.each do |feed| %>
     <div class="box panel panel-default">
-    	<%= link_to feed.content do %>
+    	<%= link_to feed.content, class: "iframe cboxElement" do %>
 	      <div class="panel-heading center">
 	        <p><strong><%= feed.title %></strong></p>
 	      </div>

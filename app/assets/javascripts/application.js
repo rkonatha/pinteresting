@@ -13,6 +13,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.turbolinks
+//= require jquery.colorbox
+//= require jquery.colorbox-pl
 //= require bootstrap
 //= require turbolinks
 //= require_tree .
