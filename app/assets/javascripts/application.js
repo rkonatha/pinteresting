@@ -14,8 +14,8 @@
 //= require jquery_ujs
 //= require jquery.turbolinks
 //= require jquery.colorbox
-//= require jquery.colorbox-pl
 //= require bootstrap
 //= require turbolinks
 //= require_tree .
 //= require masonry/jquery.masonry
+//= require jquery.colorbox-pl
