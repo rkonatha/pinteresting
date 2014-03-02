@@ -20,7 +20,7 @@ gem "will_paginate-bootstrap"
 gem "clockwork"
 gem 'delayed_job_active_record'
 gem "feedzirra"
-gem 'twitter'
+gem 'twitter', '~> 5.7.1'
 
 group :development, :test do
      gem 'sqlite3'
