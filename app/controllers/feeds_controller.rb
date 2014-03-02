@@ -6,8 +6,8 @@ class FeedsController < ApplicationController
   # GET /feeds.json
   def index
     @feeds = Feed.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 8)
+    @tweets = @twitter_client.user_timeline("konathamrajesh")
   end
-
   # GET /feeds/1
   # GET /feeds/1.json
   def show

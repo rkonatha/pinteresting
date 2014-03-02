@@ -6,8 +6,11 @@ $ ->
     $('#feeds').masonry
       itemSelector: '.box'
       isFitWidth: true
-  $('.iframe').colorbox
-  	iframe:true
-  	width:"80%" 
-  	height:"80%"
-		
+ready = ->
+	$.colorbox.remove()
+	$('.iframe').colorbox
+		iframe:true
+		width:"80%" 
+		height:"80%"
+$(document).on('ready', ready)
+$(document).on('page:load', ready)
